@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## 0.5.0
+- Recordatorio de copia: si pasan 14 días sin exportar (o nunca se exportó y ya hay datos), aparece un aviso con **Exportar copia** y **Ahora no**; el descarte dura hasta el día siguiente.
+- Copias automáticas: antes de cada importación o restauración se guardan hasta 3 copias rotativas del estado anterior, recuperables desde **Copias automáticas** en el menú lateral.
+- Al restaurar una copia, el estado descartado también se guarda, así la restauración se puede deshacer.
+- Esquema de datos versión 3: se agregan `inicio`, `ultimaCopia` y `avisoCopia`.
+
 ## 0.4.0
 - Nueva interfaz según el prototipo: contenedor redondeado sobre fondo gris claro, tarjetas blancas con borde fino, tipografía más compacta y naranja como color de acento.
 - Menú lateral con iconos, cabecera con el título y la descripción de cada vista, y acciones de tema, importar y exportar en la cabecera.

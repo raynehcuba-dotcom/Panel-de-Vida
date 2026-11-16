@@ -5,7 +5,7 @@ Aplicación web personal que funciona sin conexión. Reúne metas, hábitos, fin
 ## Uso
 1. Abra `index.html` con doble clic (Chrome, Edge o Firefox).
 2. Use siempre el mismo navegador y la misma ruta de carpeta: los datos se guardan en el navegador.
-3. Exporte una copia con **Exportar copia** de forma periódica y guárdela en `respaldos/`.
+3. Exporte una copia con **Exportar copia** de forma periódica y guárdela en `respaldos/`. La app avisa cuando pasan 14 días sin exportar y, antes de cada importación, guarda copias automáticas recuperables desde **Copias automáticas**.
 
 ## Estructura
 - `index.html`: marcado de las vistas y carga de scripts (el orden importa).

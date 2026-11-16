@@ -20,7 +20,10 @@
    <button data-v="fin"><i data-ico="wallet"></i>Finanzas</button>
    <button data-v="cer"><i data-ico="book"></i>Segundo cerebro</button>
   </nav>
-  <p class="side-note">Sus datos se guardan solo en este navegador. Exporte una copia con frecuencia.</p>
+  <div class="side-foot">
+   <button class="side-link" id="copias-btn"><i data-ico="clock"></i>Copias automáticas</button>
+   <p class="side-note">Sus datos se guardan solo en este navegador. Exporte una copia con frecuencia.</p>
+  </div>
  </aside>
  <main>
   <header class="top">
@@ -31,6 +34,12 @@
     <button class="pri" id="exp">Exportar copia</button>
    </div>
   </header>
+
+  <div class="aviso" id="aviso-copia" hidden>
+   <span class="aviso-i" data-ico="download"></span>
+   <p id="aviso-texto"></p>
+   <div class="aviso-a"><button class="g" id="aviso-no">Ahora no</button><button class="pri" id="aviso-exp">Exportar copia</button></div>
+  </div>
 
   <section id="v-resumen"></section>
 
@@ -84,6 +93,12 @@
   </section>
  </main>
 </div>
+
+<dialog class="modal" id="dlg-copias">
+ <div class="modal-h"><h2>Copias automáticas</h2><button class="ico" id="dlg-cerrar" aria-label="Cerrar"><i data-ico="x"></i></button></div>
+ <p class="mu">Se guardan hasta 3 copias del estado anterior, justo antes de importar un archivo o restaurar otra copia.</p>
+ <div id="l-copias"></div>
+</dialog>
 
 <!-- Scripts clásicos (no módulos ES) para que la app abra con doble clic desde el disco. El orden importa. -->
 <script src="js/utils.js"></script>

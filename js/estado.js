@@ -1,7 +1,8 @@
 /* Estado de la app, guardado en el navegador y migraciones entre versiones del esquema. */
 const K='panel-de-vida-v1';      // clave de almacenamiento: no cambiarla, para conservar los datos existentes
-const VERSION=2;                 // versión del esquema de datos (ver docs/modelo-de-datos.md)
-const base=()=>({version:VERSION,metas:[],habitos:[],movs:[],cer:[],tema:'light'});
+const VERSION=3;                 // versión del esquema de datos (ver docs/modelo-de-datos.md)
+const DIAS_AVISO_COPIA=14;       // días sin exportar antes de recordar la copia de seguridad
+const base=()=>({version:VERSION,metas:[],habitos:[],movs:[],cer:[],tema:'light',inicio:hoy(),ultimaCopia:'',avisoCopia:''});
 
 /* Normalización: una copia antigua, importada o editada a mano no debe romper el renderizado. */
 const txt=v=>typeof v==='string'?v:'';
@@ -15,6 +16,9 @@ function normalizar(d){
  d.movs=arr(d.movs).map(m=>({id:txt(m.id)||uid(),tipo:m.tipo==='ingreso'?'ingreso':'gasto',m:+m.m||0,mo:txt(m.mo),c:txt(m.c),fecha:txt(m.fecha),n:txt(m.n)}));
  d.cer=arr(d.cer).map(x=>({id:txt(x.id)||uid(),tipo:TIPOS_CER.includes(x.tipo)?x.tipo:'nota',t:txt(x.t),x:txt(x.x),r:txt(x.r),tg:lista(x.tg),pr:txt(x.pr),fecha:txt(x.fecha),hecha:!!x.hecha}));
  d.tema=d.tema==='light'?'light':'dark';
+ d.inicio=txt(d.inicio)||hoy();
+ d.ultimaCopia=txt(d.ultimaCopia);
+ d.avisoCopia=txt(d.avisoCopia);
  d.version=Math.max(VERSION,+d.version||VERSION);
  return d;
 }
@@ -23,7 +27,8 @@ function migrar(d){
  if(!d||typeof d!=='object')return base();
  d.version=d.version||1;
  if(d.version<2){d.cer=d.cer||[];d.version=2}
- // Próximas migraciones: if(d.version<3){ ...adaptar campos...; d.version=3 }
+ if(d.version<3){d.inicio=d.inicio||hoy();d.ultimaCopia=d.ultimaCopia||'';d.avisoCopia=d.avisoCopia||'';d.version=3}
+ // Próximas migraciones: if(d.version<4){ ...adaptar campos...; d.version=4 }
  return normalizar(d);
 }
 

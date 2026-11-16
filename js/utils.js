@@ -23,6 +23,7 @@ const ICO={
  pencil:svgIco('<path d="M4.5 19.5h4l10-10-4-4-10 10z"/><path d="M13.5 6.5l4 4"/>'),
  undo:svgIco('<path d="M9 14.5L4.5 10 9 5.5"/><path d="M4.5 10h9a5.5 5.5 0 0 1 0 11H10"/>'),
  arrow:svgIco('<path d="M7.5 16.5l9-9"/><path d="M9.5 7.5h7v7"/>'),
+ download:svgIco('<path d="M12 4.5v10"/><path d="M8 11l4 4 4-4"/><path d="M5 19.5h14"/>'),
  plus:svgIco('<path d="M12 5.5v13"/><path d="M5.5 12h13"/>')
 };
 const ico=n=>ICO[n]||'';

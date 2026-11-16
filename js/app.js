@@ -34,3 +34,4 @@ document.querySelectorAll('[data-ico]').forEach(el=>el.innerHTML=ico(el.dataset.
 Object.values(PDV.mod).forEach(m=>m.iniciar&&m.iniciar());
 aplicarTema(S.tema);
 mostrarVista('resumen');
+actualizarAviso();

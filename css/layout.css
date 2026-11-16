@@ -1,16 +1,38 @@
-/* Estructura: menú lateral, área principal, cuadrículas y adaptación a pantallas pequeñas */
-.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
-nav{background:var(--sf);border-right:1px solid var(--ln);padding:24px 14px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
-nav h1{font-size:1.3rem;font-weight:600;padding:0 10px 18px;letter-spacing:.2px}
-nav>button{text-align:left;background:none;border:0;color:var(--mu);padding:10px 12px;border-radius:10px;font:inherit;cursor:pointer}
-nav>button:hover{background:var(--sf2);color:var(--tx)}
-nav>button.on{background:var(--sf2);color:var(--ac);box-shadow:inset 3px 0 var(--ac)}
-.foot{margin-top:auto;display:flex;flex-direction:column;gap:6px}
-main{padding:32px clamp(16px,4vw,48px);max-width:960px;width:100%}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:24px}
-@media(max-width:760px){
-.app{grid-template-columns:1fr}
-nav{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px;border-right:0;border-bottom:1px solid var(--ln)}
-nav h1{width:100%;padding:0 4px 6px}
-.foot{flex-direction:row;margin:0;width:100%;flex-wrap:wrap}
+/* Estructura: contenedor flotante, menú lateral, cabecera y adaptación a pantallas pequeñas */
+.shell{display:grid;grid-template-columns:266px minmax(0,1fr);width:calc(100% - 48px);max-width:1220px;margin:24px auto;height:calc(100vh - 48px);min-height:520px;background:var(--sf);border:1px solid var(--ln);border-radius:var(--r-lg);box-shadow:var(--sh-up);overflow:hidden}
+
+/* Menú lateral */
+.side{display:flex;flex-direction:column;gap:2px;padding:14px 12px;border-right:1px solid var(--ln);min-height:0}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 16px}
+.logo{width:34px;height:34px;border-radius:50%;background:var(--tx);color:var(--sf);display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:.04em;flex:none}
+.brand strong{display:block;font-size:13.5px}
+.brand small{display:block;font-size:10.5px;color:var(--mu);letter-spacing:0}
+.side-label{font-size:11px;font-weight:700;color:var(--tx);padding:0 10px;margin:10px 0 8px}
+nav{display:flex;flex-direction:column;gap:2px;overflow:auto;min-height:0}
+nav button{display:flex;align-items:center;gap:10px;background:none;border:0;font:inherit;font-size:13px;font-weight:500;color:var(--tx2);padding:10px 12px;border-radius:999px;cursor:pointer;text-align:left;transition:background .15s,color .15s,box-shadow .15s}
+nav button i{display:inline-flex;color:currentColor;opacity:.9}
+nav button:hover{background:var(--sf2);color:var(--tx)}
+nav button.on{background:var(--ac);color:#fff;font-weight:600;box-shadow:0 8px 18px rgba(244,118,47,.28)}
+.side-note{margin-top:auto;padding:14px 10px 4px;font-size:11px;line-height:1.5;color:var(--mu)}
+
+/* Área principal */
+main{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 24px;border-bottom:1px solid var(--ln);background:var(--sf);position:sticky;top:0;z-index:4}
+.top h1{font-size:15px}
+.top .sub{margin-top:2px}
+.top-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+main>section{padding:22px 24px 34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:14px;margin-bottom:16px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;align-items:start}
+
+@media(max-width:900px){
+ .shell{grid-template-columns:1fr;width:100%;height:auto;min-height:100vh;margin:0;border:0;border-radius:0;box-shadow:none}
+ .side{border-right:0;border-bottom:1px solid var(--ln);padding:12px}
+ .brand{padding:4px 4px 10px}
+ nav{flex-direction:row;flex-wrap:wrap;gap:4px;overflow:visible}
+ nav button{font-size:12.5px;padding:8px 12px}
+ .side-note{display:none}
+ main{overflow:visible}
+ .top{position:static;padding:14px 16px}
+ main>section{padding:16px 16px 28px}
 }

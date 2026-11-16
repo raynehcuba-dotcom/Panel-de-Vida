@@ -1,7 +1,7 @@
 /* Estado de la app, guardado en el navegador y migraciones entre versiones del esquema. */
 const K='panel-de-vida-v1';      // clave de almacenamiento: no cambiarla, para conservar los datos existentes
 const VERSION=2;                 // versión del esquema de datos (ver docs/modelo-de-datos.md)
-const base=()=>({version:VERSION,metas:[],habitos:[],movs:[],cer:[],tema:'dark'});
+const base=()=>({version:VERSION,metas:[],habitos:[],movs:[],cer:[],tema:'light'});
 
 /* Normalización: una copia antigua, importada o editada a mano no debe romper el renderizado. */
 const txt=v=>typeof v==='string'?v:'';

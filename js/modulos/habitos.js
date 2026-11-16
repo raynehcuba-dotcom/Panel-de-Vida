@@ -3,8 +3,8 @@ PDV.mod.habitos={
  racha(h){let c=0;const d=new Date();if(!h.dias.includes(iso(d)))d.setDate(d.getDate()-1);while(h.dias.includes(iso(d))){c++;d.setDate(d.getDate()-1)}return c},
  renderizar(){
   const ds=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()-6+i);return d});
-  $('#l-hab').innerHTML=S.habitos.length?S.habitos.map(h=>`<div class="item"><div class="row"><span class="t">${esc(h.t)}</span><span><span class="pill">Racha: ${this.racha(h)} d</span> <button class="x" data-a="hd" data-id="${h.id}" title="Eliminar">✕</button></span></div>
- <div class="days" style="margin-top:10px">${ds.map(d=>{const k=iso(d);return`<div class="d ${k===hoy()?'hoy':''}">${d.toLocaleDateString('es',{weekday:'short'}).replace('.','')}<button class="${h.dias.includes(k)?'y':''}" data-a="ht" data-id="${h.id}" data-d="${k}" aria-label="${k}">✓</button></div>`}).join('')}</div></div>`).join(''):'<div class="empty">Aún no tiene hábitos. Agregue el primero arriba.</div>';
+  $('#l-hab').innerHTML=S.habitos.length?S.habitos.map(h=>`<div class="item"><div class="row"><span class="t">${esc(h.t)}</span><span class="acts"><span class="pill">Racha ${this.racha(h)} d</span><button class="ico del" data-a="hd" data-id="${h.id}" title="Eliminar" aria-label="Eliminar">${ico('x')}</button></span></div>
+ <div class="days">${ds.map(d=>{const k=iso(d);return`<div class="d ${k===hoy()?'hoy':''}"><span>${d.toLocaleDateString('es',{weekday:'short'}).replace('.','')}</span><button class="${h.dias.includes(k)?'y':''}" data-a="ht" data-id="${h.id}" data-d="${k}" aria-label="Marcar el ${k}">${ico('check')}</button></div>`}).join('')}</div></div>`).join(''):'<div class="empty">Aún no tiene hábitos. Agregue el primero arriba.</div>';
  },
  acciones:{
   hd(id){if(confirm('¿Eliminar este hábito y su historial?'))S.habitos=S.habitos.filter(x=>x.id!==id)},

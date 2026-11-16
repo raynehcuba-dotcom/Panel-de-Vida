@@ -3,9 +3,9 @@ PDV.mod.finanzas={
  totales(mes){const o={};S.movs.filter(m=>!mes||m.fecha.slice(0,7)===mes).forEach(m=>{o[m.mo]=o[m.mo]||{i:0,g:0};o[m.mo][m.tipo==='ingreso'?'i':'g']+=m.m});return o},
  renderizar(){
   const t=this.totales(mesAct()),mon=Object.keys(t);
-  $('#s-fin').innerHTML=mon.length?mon.map(c=>`<div class="card"><h3>${c} · este mes</h3><div class="in">Ingresos: ${fmt(t[c].i)}</div><div class="out">Gastos: ${fmt(t[c].g)}</div><div class="big" style="margin-top:6px">${fmt(t[c].i-t[c].g)}</div></div>`).join(''):'<div class="card"><p class="mu">Registre un movimiento para ver el balance del mes.</p></div>';
+  $('#s-fin').innerHTML=mon.length?mon.map(c=>{const b=t[c].i-t[c].g;return`<div class="card"><div class="card-h"><h3>${c} · este mes</h3><span class="ico-btn">${ico('wallet')}</span></div><div class="num ${b>=0?'in':'out'}">${fmt(b)}</div><div class="bal"><span class="mu in">Ingresos ${fmt(t[c].i)}</span><span class="mu out">Gastos ${fmt(t[c].g)}</span></div></div>`}).join(''):`<div class="card"><div class="card-h"><h3>Este mes</h3><span class="ico-btn">${ico('wallet')}</span></div><p class="mu">Registre un movimiento para ver el balance del mes.</p></div>`;
   const L=[...S.movs].sort((a,b)=>b.fecha.localeCompare(a.fecha)).slice(0,60);
-  $('#l-fin').innerHTML=L.length?L.map(m=>`<div class="item mov"><div class="row"><div><span class="t">${esc(m.c||'Sin categoría')}</span><div class="mu">${m.fecha}${m.n?' · '+esc(m.n):''}</div></div><span><span class="amt ${m.tipo==='ingreso'?'in':'out'}">${m.tipo==='ingreso'?'+':'−'}${fmt(m.m)} ${m.mo}</span> <button class="x" data-a="fd" data-id="${m.id}" title="Eliminar">✕</button></span></div></div>`).join(''):'<div class="empty">No hay movimientos registrados.</div>';
+  $('#l-fin').innerHTML=L.length?L.map(m=>`<div class="item mov"><div class="row"><div><span class="t">${esc(m.c||'Sin categoría')}</span><div class="mu">${m.fecha}${m.n?' · '+esc(m.n):''}</div></div><span class="acts"><span class="amt ${m.tipo==='ingreso'?'in':'out'}">${m.tipo==='ingreso'?'+':'−'}${fmt(m.m)} ${m.mo}</span><button class="ico del" data-a="fd" data-id="${m.id}" title="Eliminar" aria-label="Eliminar">${ico('x')}</button></span></div></div>`).join(''):'<div class="empty">No hay movimientos registrados.</div>';
  },
  acciones:{
   fd(id){if(confirm('¿Eliminar este movimiento?'))S.movs=S.movs.filter(x=>x.id!==id)}

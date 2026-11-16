@@ -1,14 +1,61 @@
 /* Base: variables de color, temas claro y oscuro, tipografía y utilidades */
-:root{--bg:#10121a;--sf:#181b26;--sf2:#212535;--ln:#2d3246;--tx:#e9e8f2;--mu:#9a9fb5;--ac:#8aa8ff;--ok:#5fd4a6;--bad:#ff8c7a;--warn:#f0c15a;color-scheme:dark}
-:root[data-theme=light]{--bg:#f2f3f9;--sf:#fff;--sf2:#eceef6;--ln:#d8dbea;--tx:#1b1e2b;--mu:#5b607e;--ac:#3a5bd0;--ok:#1b8f64;--bad:#cc4a38;--warn:#a87505;color-scheme:light}
-*{box-sizing:border-box;margin:0}
+:root{
+ --bg:#e9e9ec;
+ --sf:#fff;
+ --sf2:#f6f6f7;
+ --sf3:#efeff1;
+ --ln:#ededf0;
+ --ln2:#e2e2e7;
+ --tx:#1b1b1f;
+ --tx2:#5c5c66;
+ --mu:#8b8b96;
+ --ac:#f4762f;
+ --ac2:#e56a20;
+ --ac-ink:#b9530f;
+ --ac-t:#fff0e6;
+ --ok:#2b9a58;
+ --ok-t:#e7f6ec;
+ --bad:#d0493f;
+ --bad-t:#fdecea;
+ --track:#f0f0f3;
+ --sh:0 1px 2px rgba(20,20,30,.05);
+ --sh-up:0 22px 60px rgba(20,20,30,.12);
+ --r:16px;--r-lg:26px;--r-sm:12px;
+ color-scheme:light;
+}
+:root[data-theme=dark]{
+ --bg:#0f0f12;
+ --sf:#17171b;
+ --sf2:#212127;
+ --sf3:#282830;
+ --ln:#26262d;
+ --ln2:#33333c;
+ --tx:#f2f2f5;
+ --tx2:#bdbdc7;
+ --mu:#8b8b96;
+ --ac:#f78347;
+ --ac2:#f4762f;
+ --ac-ink:#f7a06a;
+ --ac-t:#31221a;
+ --ok:#4cc282;
+ --ok-t:#16301f;
+ --bad:#f08d83;
+ --bad-t:#331d1a;
+ --track:#26262d;
+ --sh:0 1px 2px rgba(0,0,0,.35);
+ --sh-up:0 22px 60px rgba(0,0,0,.55);
+ color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
-body{background:var(--bg);color:var(--tx);font:16px/1.5 "Bahnschrift","Segoe UI",system-ui,sans-serif}
-h2{font-size:1.8rem;font-weight:600;line-height:1.2}
-.sub{color:var(--mu);margin:4px 0 24px}
-.big{font-size:2rem;font-weight:600;line-height:1.1}
-.mu{color:var(--mu);font-size:.9rem}
-:root[data-theme=dark] .pri{color:#10121a}
-.pill{font-size:.8rem;color:var(--warn)}
+body{background:var(--bg);color:var(--tx);font-family:"Segoe UI Variable Text","Segoe UI",Inter,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:14px;line-height:1.45;letter-spacing:-.004em;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:700;line-height:1.2;letter-spacing:-.02em}
+h2{font-size:22px}
+h3{font-size:13px}
+button,input,select,textarea{font-family:inherit}
+.sub{color:var(--mu);font-size:12.5px}
+.mu{color:var(--mu);font-size:12px}
+.num{font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.num.sm{font-size:19px}
 .in{color:var(--ok)}.out{color:var(--bad)}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

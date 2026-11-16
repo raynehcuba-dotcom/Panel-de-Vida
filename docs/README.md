@@ -25,3 +25,5 @@ Aplicación web personal que funciona sin conexión. Reúne metas, hábitos, fin
 ## Notas técnicas
 - Se usan scripts clásicos, no módulos ES, porque los navegadores los bloquean al abrir la página desde el disco.
 - Los botones con `data-a="accion"` se despachan al módulo que declare esa acción en su objeto `acciones`.
+- La interfaz sigue el prototipo entregado: contenedor redondeado, tarjetas blancas con borde fino y naranja como acento. Los colores, radios y sombras son variables CSS en `css/base.css`; el tema claro es el predeterminado y el oscuro se activa desde la cabecera.
+- Los iconos son SVG en línea generados por `ico()` (`js/utils.js`) o inyectados con `data-ico="nombre"` en el marcado; no hay fuentes ni archivos externos, así la app sigue funcionando sin conexión.

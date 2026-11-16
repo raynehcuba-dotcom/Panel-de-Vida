@@ -1,5 +1,12 @@
 # Registro de cambios
 
+## 0.4.0
+- Nueva interfaz según el prototipo: contenedor redondeado sobre fondo gris claro, tarjetas blancas con borde fino, tipografía más compacta y naranja como color de acento.
+- Menú lateral con iconos, cabecera con el título y la descripción de cada vista, y acciones de tema, importar y exportar en la cabecera.
+- Controles rediseñados: formularios tipo tarjeta, filtros segmentados, chips de etiquetas, barras de avance y control deslizante con relleno naranja.
+- El tema claro es ahora el predeterminado; el tema oscuro se mantiene con la misma paleta.
+- `js/utils.js` incorpora los iconos de línea (`ico()`) y la fecha larga (`fLarga()`).
+
 ## 0.3.1
 - Al cargar o importar, los registros se normalizan: campos de texto faltantes, listas ausentes y tipos incorrectos ya no rompen el renderizado.
 - Importar copia: valida también `cer`, solo reemplaza los datos si la copia es válida y reinicia los filtros del segundo cerebro.

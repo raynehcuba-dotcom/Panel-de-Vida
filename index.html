@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,78 +9,81 @@
 <link rel="stylesheet" href="css/componentes.css">
 </head>
 <body>
-<div class="app">
-<nav>
- <h1>Panel de Vida</h1>
- <button data-v="resumen" class="on">Resumen</button>
- <button data-v="metas">Metas</button>
- <button data-v="habitos">Hábitos</button>
- <button data-v="fin">Finanzas</button>
- <button data-v="cer">Segundo cerebro</button>
- <div class="foot">
-  <button class="g" id="tema">Modo claro</button>
-  <button class="g" id="exp">Exportar copia</button>
-  <label class="g">Importar copia<input type="file" id="imp" accept=".json" hidden></label>
- </div>
-</nav>
-<main>
- <section id="v-resumen"></section>
+<div class="shell">
+ <aside class="side">
+  <div class="brand"><span class="logo">PV</span><div><strong>Panel de Vida</strong><small>Todo en un solo lugar</small></div></div>
+  <p class="side-label">Menú</p>
+  <nav>
+   <button data-v="resumen" class="on"><i data-ico="grid"></i>Resumen</button>
+   <button data-v="metas"><i data-ico="target"></i>Metas</button>
+   <button data-v="habitos"><i data-ico="check"></i>Hábitos</button>
+   <button data-v="fin"><i data-ico="wallet"></i>Finanzas</button>
+   <button data-v="cer"><i data-ico="book"></i>Segundo cerebro</button>
+  </nav>
+  <p class="side-note">Sus datos se guardan solo en este navegador. Exporte una copia con frecuencia.</p>
+ </aside>
+ <main>
+  <header class="top">
+   <div><h1 id="titulo">Resumen</h1><p class="sub" id="subtitulo">Metas, hábitos, finanzas y notas de un vistazo</p></div>
+   <div class="top-actions">
+    <button class="g" id="tema">Modo oscuro</button>
+    <label class="g">Importar copia<input type="file" id="imp" accept=".json" hidden></label>
+    <button class="pri" id="exp">Exportar copia</button>
+   </div>
+  </header>
 
- <section id="v-metas" hidden>
-  <h2>Metas</h2><p class="sub">Defina lo que quiere lograr y registre su avance.</p>
-  <form class="add" id="f-meta">
-   <label style="flex:3 1 220px">Meta<input name="t" required maxlength="90" placeholder="Ej.: Ahorrar para el equipo nuevo"></label>
-   <label>Fecha límite<input name="f" type="date"></label>
-   <button class="pri">Agregar meta</button>
-  </form>
-  <div id="l-metas"></div>
- </section>
+  <section id="v-resumen"></section>
 
- <section id="v-habitos" hidden>
-  <h2>Hábitos</h2><p class="sub">Marque cada día cumplido. La racha cuenta los días seguidos.</p>
-  <form class="add" id="f-hab">
-   <label style="flex:3 1 220px">Hábito<input name="t" required maxlength="60" placeholder="Ej.: Caminar 30 minutos"></label>
-   <button class="pri">Agregar hábito</button>
-  </form>
-  <div id="l-hab"></div>
- </section>
+  <section id="v-metas" hidden>
+   <form class="add" id="f-meta">
+    <label class="w3">Meta<input name="t" required maxlength="90" placeholder="Ej.: Ahorrar para el equipo nuevo"></label>
+    <label>Fecha límite<input name="f" type="date"></label>
+    <button class="pri">Agregar meta</button>
+   </form>
+   <div id="l-metas"></div>
+  </section>
 
- <section id="v-fin" hidden>
-  <h2>Finanzas</h2><p class="sub">Ingresos y gastos personales, separados por moneda.</p>
-  <div class="grid" id="s-fin"></div>
-  <form class="add" id="f-fin">
-   <label>Tipo<select name="tipo"><option value="gasto">Gasto</option><option value="ingreso">Ingreso</option></select></label>
-   <label>Monto<input name="m" type="number" step="0.01" min="0.01" required></label>
-   <label>Moneda<select name="mo"><option>CUP</option><option>USD</option></select></label>
-   <label>Categoría<input name="c" list="cats" maxlength="30" placeholder="Alimentos"></label>
-   <label>Fecha<input name="f" type="date" required></label>
-   <label style="flex:2 1 200px">Nota<input name="n" maxlength="80"></label>
-   <button class="pri">Registrar</button>
-  </form>
-  <datalist id="cats"><option>Alimentos<option>Transporte<option>Hogar<option>Salud<option>Educación<option>Ocio<option>Salario<option>Ventas<option>Otros</datalist>
-  <div id="l-fin"></div>
- </section>
+  <section id="v-habitos" hidden>
+   <form class="add" id="f-hab">
+    <label class="w3">Hábito<input name="t" required maxlength="60" placeholder="Ej.: Caminar 30 minutos"></label>
+    <button class="pri">Agregar hábito</button>
+   </form>
+   <div id="l-hab"></div>
+  </section>
 
- <section id="v-cer" hidden>
-  <h2>Segundo cerebro</h2><p class="sub">Capture notas, tareas, enlaces y normativa en un solo lugar y encuéntrelos después.</p>
-  <form class="add" id="f-cer">
-   <label>Tipo<select name="tipo"><option value="nota">Nota o idea</option><option value="tarea">Tarea</option><option value="enlace">Enlace o recurso</option><option value="norma">Normativa o documento</option></select></label>
-   <label style="flex:3 1 220px">Título<input name="t" required maxlength="120"></label>
-   <label style="flex:1 1 100%">Contenido<textarea name="x" rows="3" maxlength="3000"></textarea></label>
-   <label style="flex:2 1 200px">Enlace o referencia<input name="r" maxlength="300" placeholder="https://… o Resolución 00/2025"></label>
-   <label>Etiquetas<input name="tg" maxlength="80" placeholder="fiscal, ideas"></label>
-   <label>Proyecto<input name="pr" list="pl" maxlength="40"></label>
-   <button class="pri" id="c-ok">Capturar</button>
-   <button type="button" class="g" id="c-cancel" hidden>Cancelar edición</button>
-  </form>
-  <datalist id="pl"></datalist>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><input id="c-q" type="search" placeholder="Buscar en todo…" style="flex:2 1 200px"><select id="c-p" style="flex:1 1 160px"></select></div>
-  <div class="chips"><button class="chip on" data-t="todo">Todo</button><button class="chip" data-t="nota">Notas</button><button class="chip" data-t="tarea">Tareas</button><button class="chip" data-t="enlace">Enlaces</button><button class="chip" data-t="norma">Normativa</button></div>
-  <div id="l-cer"></div>
- </section>
-</main>
+  <section id="v-fin" hidden>
+   <div class="grid" id="s-fin"></div>
+   <form class="add" id="f-fin">
+    <label>Tipo<select name="tipo"><option value="gasto">Gasto</option><option value="ingreso">Ingreso</option></select></label>
+    <label>Monto<input name="m" type="number" step="0.01" min="0.01" required placeholder="0,00"></label>
+    <label>Moneda<select name="mo"><option>CUP</option><option>USD</option></select></label>
+    <label>Categoría<input name="c" list="cats" maxlength="30" placeholder="Alimentos"></label>
+    <label>Fecha<input name="f" type="date" required></label>
+    <label class="w2">Nota<input name="n" maxlength="80" placeholder="Opcional"></label>
+    <button class="pri">Registrar</button>
+   </form>
+   <datalist id="cats"><option>Alimentos<option>Transporte<option>Hogar<option>Salud<option>Educación<option>Ocio<option>Salario<option>Ventas<option>Otros</datalist>
+   <div id="l-fin"></div>
+  </section>
+
+  <section id="v-cer" hidden>
+   <form class="add" id="f-cer">
+    <label>Tipo<select name="tipo"><option value="nota">Nota o idea</option><option value="tarea">Tarea</option><option value="enlace">Enlace o recurso</option><option value="norma">Normativa o documento</option></select></label>
+    <label class="w3">Título<input name="t" required maxlength="120" placeholder="Ej.: Resolución 00/2025"></label>
+    <label class="full">Contenido<textarea name="x" rows="3" maxlength="3000" placeholder="Escriba los detalles que quiera recordar"></textarea></label>
+    <label class="w2">Enlace o referencia<input name="r" maxlength="300" placeholder="https://… o Resolución 00/2025"></label>
+    <label>Etiquetas<input name="tg" maxlength="80" placeholder="fiscal, ideas"></label>
+    <label>Proyecto<input name="pr" list="pl" maxlength="40" placeholder="Opcional"></label>
+    <button class="pri" id="c-ok">Capturar</button>
+    <button type="button" class="g" id="c-cancel" hidden>Cancelar edición</button>
+   </form>
+   <datalist id="pl"></datalist>
+   <div class="toolbar"><input id="c-q" type="search" placeholder="Buscar en todo…"><select id="c-p"></select></div>
+   <div class="chips"><button class="chip on" data-t="todo">Todo</button><button class="chip" data-t="nota">Notas</button><button class="chip" data-t="tarea">Tareas</button><button class="chip" data-t="enlace">Enlaces</button><button class="chip" data-t="norma">Normativa</button></div>
+   <div id="l-cer"></div>
+  </section>
+ </main>
 </div>
-
 
 <!-- Scripts clásicos (no módulos ES) para que la app abra con doble clic desde el disco. El orden importa. -->
 <script src="js/utils.js"></script>

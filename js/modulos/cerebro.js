@@ -11,10 +11,10 @@ PDV.mod.cerebro={
   document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.t===cf.t));
   const q=cf.q.toLowerCase();
   const L=S.cer.filter(x=>(cf.t==='todo'||x.tipo===cf.t)&&(!cf.p||x.pr===cf.p)&&(!q||[x.t,x.x,x.r,x.tg.join(' '),x.pr].join(' ').toLowerCase().includes(q))).sort((a,b)=>(!!a.hecha-!!b.hecha)||b.fecha.localeCompare(a.fecha));
-  $('#l-cer').innerHTML=L.length?L.map(x=>`<div class="item ${x.hecha?'done':''}"><div class="row"><span class="t">${x.tipo==='tarea'?`<button class="x" data-a="ct" data-id="${x.id}" aria-label="Completar tarea">${x.hecha?'☑':'☐'}</button>`:''}${esc(x.t)} <span class="pill">${TN[x.tipo]}</span></span><span><button class="x" data-a="ce" data-id="${x.id}" title="Editar">✎</button><button class="x" data-a="cd" data-id="${x.id}" title="Eliminar">✕</button></span></div>
- ${x.x?`<p class="mu" style="white-space:pre-wrap;margin-top:6px">${esc(x.x)}</p>`:''}
- ${x.r?`<p style="margin-top:6px;word-break:break-all">${/^https?:\/\//i.test(x.r)?`<a class="lnk" href="${esc(x.r)}" target="_blank" rel="noopener">${esc(x.r)}</a>`:esc(x.r)}</p>`:''}
- <p class="mu" style="margin-top:6px;font-size:.82rem">${x.fecha}${x.pr?' · '+esc(x.pr):''}${x.tg.map(g=>` <span class="tag">#${esc(g)}</span>`).join('')}</p></div>`).join(''):'<div class="empty">No hay elementos con ese filtro. Capture el primero arriba.</div>';
+  $('#l-cer').innerHTML=L.length?L.map(x=>`<div class="item ${x.hecha?'done':''}"><div class="row"><span class="t">${x.tipo==='tarea'?`<button class="tick ${x.hecha?'on':''}" data-a="ct" data-id="${x.id}" aria-label="Completar tarea">${ico('check')}</button>`:''}${esc(x.t)}<span class="pill soft">${TN[x.tipo]}</span></span><span class="acts"><button class="ico" data-a="ce" data-id="${x.id}" title="Editar" aria-label="Editar">${ico('pencil')}</button><button class="ico del" data-a="cd" data-id="${x.id}" title="Eliminar" aria-label="Eliminar">${ico('x')}</button></span></div>
+ ${x.x?`<p class="mu" style="white-space:pre-wrap;margin-top:8px">${esc(x.x)}</p>`:''}
+ ${x.r?`<p style="margin-top:8px">${/^https?:\/\//i.test(x.r)?`<a class="lnk" href="${esc(x.r)}" target="_blank" rel="noopener">${esc(x.r)}</a>`:esc(x.r)}</p>`:''}
+ <p class="meta">${x.fecha}${x.pr?' · '+esc(x.pr):''}${x.tg.map(g=>` <span class="tag">#${esc(g)}</span>`).join('')}</p></div>`).join(''):'<div class="empty">No hay elementos con ese filtro. Capture el primero arriba.</div>';
  },
  acciones:{
   cd(id){if(confirm('¿Eliminar este elemento?'))S.cer=S.cer.filter(x=>x.id!==id)},

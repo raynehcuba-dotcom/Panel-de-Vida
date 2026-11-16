@@ -19,14 +19,17 @@ PDV.mod.cerebro={
  acciones:{
   cd(id){if(confirm('¿Eliminar este elemento?'))S.cer=S.cer.filter(x=>x.id!==id)},
   ct(id){const x=S.cer.find(z=>z.id===id);x.hecha=!x.hecha},
-  ce(id){const x=S.cer.find(z=>z.id===id),f=$('#f-cer');PDV.mod.cerebro.ed=id;f.tipo.value=x.tipo;f.t.value=x.t;f.x.value=x.x;f.r.value=x.r;f.tg.value=x.tg.join(', ');f.pr.value=x.pr;$('#c-ok').textContent='Guardar cambios';f.scrollIntoView({behavior:'smooth'});f.t.focus()}
+  ce(id){const x=S.cer.find(z=>z.id===id),f=$('#f-cer');PDV.mod.cerebro.ed=id;f.tipo.value=x.tipo;f.t.value=x.t;f.x.value=x.x;f.r.value=x.r;f.tg.value=x.tg.join(', ');f.pr.value=x.pr;$('#c-ok').textContent='Guardar cambios';$('#c-cancel').hidden=false;f.scrollIntoView({behavior:'smooth'});f.t.focus()}
  },
+ salir(){this.ed=null;$('#c-ok').textContent='Capturar';$('#c-cancel').hidden=true;$('#f-cer').reset()},
+ reiniciar(){this.salir();this.cf={q:'',t:'todo',p:''};$('#c-q').value=''},
  iniciar(){
   const m=this;
+  $('#c-cancel').onclick=()=>m.salir();
   $('#f-cer').onsubmit=e=>{e.preventDefault();const f=e.target;
    const o={tipo:f.tipo.value,t:f.t.value.trim(),x:f.x.value.trim(),r:f.r.value.trim(),tg:f.tg.value.split(',').map(s=>s.trim().replace(/^#/,'')).filter(Boolean),pr:f.pr.value.trim()};
-   if(m.ed){Object.assign(S.cer.find(x=>x.id===m.ed),o);m.ed=null;$('#c-ok').textContent='Capturar'}else S.cer.push(Object.assign({id:uid(),fecha:hoy(),hecha:false},o));
-   f.reset();save();PDV.renderizar()};
+   if(m.ed)Object.assign(S.cer.find(x=>x.id===m.ed),o);else S.cer.push(Object.assign({id:uid(),fecha:hoy(),hecha:false},o));
+   m.salir();save();PDV.renderizar()};
   $('#c-q').oninput=e=>{m.cf.q=e.target.value;m.renderizar()};
   $('#c-p').onchange=e=>{m.cf.p=e.target.value;m.renderizar()};
   document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{m.cf.t=c.dataset.t;m.renderizar()});

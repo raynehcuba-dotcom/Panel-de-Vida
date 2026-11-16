@@ -11,6 +11,8 @@ Se guarda en `localStorage` bajo la clave `panel-de-vida-v1` como un objeto JSON
 | `movs[]` | `id`, `tipo` (`ingreso` o `gasto`), `m` (monto), `mo` (`CUP` o `USD`), `c` (categoría), `fecha`, `n` (nota) |
 | `cer[]` | `id`, `tipo` (`nota`, `tarea`, `enlace` o `norma`), `t` (título), `x` (contenido), `r` (enlace o referencia), `tg[]` (etiquetas), `pr` (proyecto), `fecha`, `hecha` (solo tareas) |
 
+Al cargar o importar, `migrar()` normaliza los registros antes de usarlos: los campos de texto ausentes pasan a `''`, las listas a `[]`, `p` se limita a 0–100, `tipo` toma un valor válido y los `id` faltantes se generan. Así una copia antigua o editada a mano nunca deja la app en blanco.
+
 ## Historial de versiones
 - **1:** metas, hábitos y movimientos.
 - **2:** se agrega `cer[]` (segundo cerebro) y el campo `version`.

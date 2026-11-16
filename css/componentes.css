@@ -1,5 +1,5 @@
 /* Componentes: tarjetas, formularios, barras, chips, listas y botones */
-.g{background:none;border:1px solid var(--ln);color:var(--mu);padding:7px 10px;border-radius:10px;font:.85rem inherit;font-family:inherit;cursor:pointer;text-align:center}
+.g{background:none;border:1px solid var(--ln);color:var(--mu);padding:7px 10px;border-radius:10px;font-size:.85rem;font-family:inherit;cursor:pointer;text-align:center}
 .g:hover{color:var(--tx);border-color:var(--mu)}
 .card{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:18px}
 .card h3{font-size:.95rem;font-weight:500;color:var(--mu);margin-bottom:10px}

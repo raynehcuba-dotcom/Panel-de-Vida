@@ -23,3 +23,6 @@ Al cargar o importar, `migrar()` normaliza los registros antes de usarlos: los c
 
 ## Copias automáticas
 En una clave aparte (`panel-de-vida-copias`) se guardan hasta 3 copias del estado anterior, creadas justo antes de importar un archivo o de restaurar otra copia. No forman parte del JSON que genera **Exportar copia**; solo sirven para deshacer un reemplazo de datos desde **Copias automáticas**.
+
+## Guardado en archivo
+Al vincular un archivo con **Guardar en archivo** (File System Access API, Chrome/Edge), la app escribe el mismo JSON exportable en ese archivo tras cada cambio. El permiso del archivo (`FileSystemFileHandle`) se guarda en IndexedDB, en la base `panel-de-vida-archivo`, porque `localStorage` no puede almacenar ese objeto. El archivo es un espejo: la copia de trabajo sigue siendo la del navegador, y **Leer desde archivo** solo se ejecuta a petición del usuario.

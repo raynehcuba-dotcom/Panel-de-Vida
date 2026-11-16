@@ -21,8 +21,9 @@ const diasDesde=f=>Math.round((new Date(hoy()+'T00:00')-new Date(f+'T00:00'))/86
 function actualizarAviso(){
  const el=$('#aviso-copia');if(!el)return;
  const hay=S.metas.length+S.habitos.length+S.movs.length+S.cer.length>0;
+ const vinculado=PDV.archivoVinculado&&PDV.archivoVinculado();
  const d=Math.max(0,diasDesde(S.ultimaCopia||S.inicio||hoy()));
- const mostrar=hay&&d>=DIAS_AVISO_COPIA&&S.avisoCopia!==hoy();
+ const mostrar=hay&&!vinculado&&d>=DIAS_AVISO_COPIA&&S.avisoCopia!==hoy();
  el.hidden=!mostrar;
  if(mostrar)$('#aviso-texto').textContent=S.ultimaCopia
   ?`Hace ${d} ${d===1?'día':'días'} que no guarda una copia de sus datos.`

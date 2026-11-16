@@ -24,6 +24,7 @@ const ICO={
  undo:svgIco('<path d="M9 14.5L4.5 10 9 5.5"/><path d="M4.5 10h9a5.5 5.5 0 0 1 0 11H10"/>'),
  arrow:svgIco('<path d="M7.5 16.5l9-9"/><path d="M9.5 7.5h7v7"/>'),
  download:svgIco('<path d="M12 4.5v10"/><path d="M8 11l4 4 4-4"/><path d="M5 19.5h14"/>'),
+ save:svgIco('<path d="M5 4.5h10.2L19.5 8.8v10.7a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1z"/><path d="M8.5 4.5v4.8h6.6V4.5"/><path d="M8.5 20.5v-5.2h7v5.2"/>'),
  plus:svgIco('<path d="M12 5.5v13"/><path d="M5.5 12h13"/>')
 };
 const ico=n=>ICO[n]||'';

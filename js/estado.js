@@ -35,6 +35,9 @@ function migrar(d){
 let S=base();
 try{const r=localStorage.getItem(K);if(r)S=Object.assign(base(),migrar(JSON.parse(r)))}catch(e){}
 let avisoGuardado=false;
-const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){
- if(!avisoGuardado){avisoGuardado=true;alert('No se pudo guardar en el navegador (almacenamiento lleno o bloqueado). Exporte una copia de sus datos.')}
-}};
+const save=()=>{
+ try{localStorage.setItem(K,JSON.stringify(S))}catch(e){
+  if(!avisoGuardado){avisoGuardado=true;alert('No se pudo guardar en el navegador (almacenamiento lleno o bloqueado). Exporte una copia de sus datos.')}
+ }
+ PDV.trasGuardar&&PDV.trasGuardar();   // hook del guardado en archivo
+};

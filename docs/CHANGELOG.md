@@ -1,5 +1,12 @@
 # Registro de cambios
 
+## 0.6.0
+- Guardado en archivo (Chrome y Edge): vincule un JSON del equipo desde **Guardar en archivo** y la app escribe ahí cada cambio, además de en el navegador. El vínculo se recuerda entre sesiones mediante IndexedDB.
+- El diálogo del archivo permite **Guardar ahora**, **Leer desde archivo** (restaura desde el disco, con copia automática previa) y **Desvincular**.
+- Si el navegador pide permiso otra vez al reabrir, se solicita en el siguiente cambio de datos y nunca más de una vez por sesión.
+- Mientras hay un archivo vinculado, el recordatorio de exportar no aparece y la nota del menú muestra el archivo.
+- Documentación actualizada: README y modelo de datos.
+
 ## 0.5.0
 - Recordatorio de copia: si pasan 14 días sin exportar (o nunca se exportó y ya hay datos), aparece un aviso con **Exportar copia** y **Ahora no**; el descarte dura hasta el día siguiente.
 - Copias automáticas: antes de cada importación o restauración se guardan hasta 3 copias rotativas del estado anterior, recuperables desde **Copias automáticas** en el menú lateral.

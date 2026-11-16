@@ -21,8 +21,9 @@
    <button data-v="cer"><i data-ico="book"></i>Segundo cerebro</button>
   </nav>
   <div class="side-foot">
+   <button class="side-link" id="archivo-btn" hidden><i data-ico="save"></i><span id="archivo-txt">Guardar en archivo</span></button>
    <button class="side-link" id="copias-btn"><i data-ico="clock"></i>Copias automáticas</button>
-   <p class="side-note">Sus datos se guardan solo en este navegador. Exporte una copia con frecuencia.</p>
+   <p class="side-note" id="side-note">Sus datos se guardan solo en este navegador. Exporte una copia con frecuencia.</p>
   </div>
  </aside>
  <main>
@@ -100,6 +101,11 @@
  <div id="l-copias"></div>
 </dialog>
 
+<dialog class="modal" id="dlg-archivo">
+ <div class="modal-h"><h2>Guardar en archivo</h2><button class="ico" id="archivo-cerrar" aria-label="Cerrar"><i data-ico="x"></i></button></div>
+ <div id="archivo-cuerpo"></div>
+</dialog>
+
 <!-- Scripts clásicos (no módulos ES) para que la app abra con doble clic desde el disco. El orden importa. -->
 <script src="js/utils.js"></script>
 <script src="js/estado.js"></script>
@@ -109,6 +115,7 @@
 <script src="js/modulos/finanzas.js"></script>
 <script src="js/modulos/cerebro.js"></script>
 <script src="js/respaldo.js"></script>
+<script src="js/archivo.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

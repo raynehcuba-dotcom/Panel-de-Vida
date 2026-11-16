@@ -6,6 +6,7 @@ Aplicación web personal que funciona sin conexión. Reúne metas, hábitos, fin
 1. Abra `index.html` con doble clic (Chrome, Edge o Firefox).
 2. Use siempre el mismo navegador y la misma ruta de carpeta: los datos se guardan en el navegador.
 3. Exporte una copia con **Exportar copia** de forma periódica y guárdela en `respaldos/`. La app avisa cuando pasan 14 días sin exportar y, antes de cada importación, guarda copias automáticas recuperables desde **Copias automáticas**.
+4. En Chrome o Edge puede vincular un archivo con **Guardar en archivo**: la app guardará ahí cada cambio automáticamente, además de en el navegador.
 
 ## Estructura
 - `index.html`: marcado de las vistas y carga de scripts (el orden importa).
@@ -13,7 +14,8 @@ Aplicación web personal que funciona sin conexión. Reúne metas, hábitos, fin
 - `js/utils.js`: funciones auxiliares y el espacio global `PDV`.
 - `js/estado.js`: datos, guardado y migraciones de versión.
 - `js/modulos/`: un archivo por módulo (resumen, metas, hábitos, finanzas, cerebro).
-- `js/respaldo.js`: exportar e importar copias JSON.
+- `js/respaldo.js`: exportar e importar copias JSON, recordatorio y copias automáticas.
+- `js/archivo.js`: vínculo con un archivo del equipo y autoguardado (Chrome/Edge).
 - `js/app.js`: navegación, despacho de acciones, tema y arranque.
 
 ## Cómo agregar un módulo nuevo

@@ -116,6 +116,8 @@ dialog.modal::backdrop{background:rgba(16,16,22,.45)}
 .modal-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .modal-h h2{font-size:16px}
 dialog.modal .mu{margin:4px 0 14px}
+.acciones-modal{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.acciones-modal .g,.acciones-modal .pri{height:34px;font-size:12.5px;padding:0 14px}
 
 @media(max-width:900px){
  .aviso{margin:12px 16px 0}

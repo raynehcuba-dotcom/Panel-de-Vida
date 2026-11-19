@@ -8,7 +8,7 @@ PDV.mod.finanzas={
   $('#l-fin').innerHTML=L.length?L.map(m=>`<div class="item mov"><div class="row"><div><span class="t">${esc(m.c||'Sin categoría')}</span><div class="mu">${m.fecha}${m.n?' · '+esc(m.n):''}</div></div><span class="acts"><span class="amt ${m.tipo==='ingreso'?'in':'out'}">${m.tipo==='ingreso'?'+':'−'}${fmt(m.m)} ${m.mo}</span><button class="ico del" data-a="fd" data-id="${m.id}" title="Eliminar" aria-label="Eliminar">${ico('x')}</button></span></div></div>`).join(''):'<div class="empty">No hay movimientos registrados.</div>';
  },
  acciones:{
-  fd(id){if(confirm('¿Eliminar este movimiento?'))S.movs=S.movs.filter(x=>x.id!==id)}
+  fd(id){const deshacer=quitarDe(S.movs,id);if(deshacer)PDV.deshacer.ofrecer('Movimiento eliminado.',deshacer)}
  },
  iniciar(){
   const f=$('#f-fin');f.f.value=hoy();

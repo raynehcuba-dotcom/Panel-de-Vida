@@ -7,7 +7,7 @@ PDV.mod.habitos={
  <div class="days">${ds.map(d=>{const k=iso(d);return`<div class="d ${k===hoy()?'hoy':''}"><span>${d.toLocaleDateString('es',{weekday:'short'}).replace('.','')}</span><button class="${h.dias.includes(k)?'y':''}" data-a="ht" data-id="${h.id}" data-d="${k}" aria-label="Marcar el ${k}">${ico('check')}</button></div>`}).join('')}</div></div>`).join(''):'<div class="empty">Aún no tiene hábitos. Agregue el primero arriba.</div>';
  },
  acciones:{
-  hd(id){if(confirm('¿Eliminar este hábito y su historial?'))S.habitos=S.habitos.filter(x=>x.id!==id)},
+  hd(id){const deshacer=quitarDe(S.habitos,id);if(deshacer)PDV.deshacer.ofrecer('Hábito eliminado con su historial.',deshacer)},
   ht(id,b){const h=S.habitos.find(x=>x.id===id),d=b.dataset.d,i=h.dias.indexOf(d);i<0?h.dias.push(d):h.dias.splice(i,1)}
  },
  iniciar(){

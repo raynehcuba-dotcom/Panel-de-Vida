@@ -9,7 +9,7 @@ PDV.mod.metas={
  },
  acciones:{
   mh(id){const m=S.metas.find(x=>x.id===id);m.hecha=!m.hecha;if(m.hecha)m.p=100},
-  md(id){if(confirm('¿Eliminar esta meta?'))S.metas=S.metas.filter(x=>x.id!==id)}
+  md(id){const deshacer=quitarDe(S.metas,id);if(deshacer)PDV.deshacer.ofrecer('Meta eliminada.',deshacer)}
  },
  iniciar(){
   $('#f-meta').onsubmit=e=>{e.preventDefault();const f=e.target;S.metas.push({id:uid(),t:f.t.value.trim(),f:f.f.value,p:0,hecha:false});f.reset();save();PDV.renderizar()};

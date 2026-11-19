@@ -17,7 +17,7 @@ PDV.mod.cerebro={
  <p class="meta">${x.fecha}${x.pr?' · '+esc(x.pr):''}${x.tg.map(g=>` <span class="tag">#${esc(g)}</span>`).join('')}</p></div>`).join(''):'<div class="empty">No hay elementos con ese filtro. Capture el primero arriba.</div>';
  },
  acciones:{
-  cd(id){if(confirm('¿Eliminar este elemento?'))S.cer=S.cer.filter(x=>x.id!==id)},
+  cd(id){const deshacer=quitarDe(S.cer,id);if(deshacer)PDV.deshacer.ofrecer('Elemento eliminado.',deshacer)},
   ct(id){const x=S.cer.find(z=>z.id===id);x.hecha=!x.hecha},
   ce(id){const x=S.cer.find(z=>z.id===id),f=$('#f-cer');PDV.mod.cerebro.ed=id;f.tipo.value=x.tipo;f.t.value=x.t;f.x.value=x.x;f.r.value=x.r;f.tg.value=x.tg.join(', ');f.pr.value=x.pr;$('#c-ok').textContent='Guardar cambios';$('#c-cancel').hidden=false;f.scrollIntoView({behavior:'smooth'});f.t.focus()}
  },
